@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculator</title>
+    <script src="fact.js" defer></script>
+</head>
+<body>
+    <h1>Factorial Calculator</h1>
+    <form id="factorialForm">
+        <label for="number">Enter a number:</label>
+        <input type="number" id="number" name="number" required>
+        <button type="submit">Calculate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('factorialForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const number = parseInt(document.getElementById('number').value);
+            const result = factorial(number);
+            document.getElementById('result').textContent = `Factorial of ${number} is ${result}`;
+        });
+    </script>
+</body>
+</html>

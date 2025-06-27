@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registration Form</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-5">
+		<h2 class="text-center">Registration Form</h2>
+		<form id="registrationForm">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label for="confirmPassword">Confirm Password:</label>
+				<input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Register</button>
+		</form>
+	</div>
+
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<!-- Custom JS for form validation -->
+	<script>
+		document.getElementById('registrationForm').addEventListener('submit', function(event) {
+			event.preventDefault();
+			const password = document.getElementById('password').value;
+			const confirmPassword = document.getElementById('confirmPassword').value;
+
+			if (password !== confirmPassword) {
+				alert('Passwords do not match!');
+				return;
+			}
+            // add the validation for email address
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert('Invalid email address!');
+                return;
+            }
+            // add validation for name
+            const name = document.getElementById('name').value;
+            const namePattern = /^[a-zA-Z\s]{5,}$/;
+            if (!namePattern.test(name)) {
+                alert('Invalid name! Name should contain at least 5 characters.');
+                return;
+            }
+
+			// If validation passes, you can submit the form or perform other actions
+			alert('Registration successful!');
+			// Optionally, you can submit the form programmatically
+			// this.submit();
+		});
+	</script>
+</body>
+</html>
